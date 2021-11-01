@@ -7,121 +7,238 @@
 @import "blocks/header.scss";
 @import "blocks/footer.scss";
 
-.page__banner {
-  margin-bottom: 60px;
+$red: #ce0808;
 
-  @media (max-width: $desktop) {
-    margin-bottom: 45px;
-  }
-
-  @media (max-width: $tablet) {
-    margin-bottom: 30px;
-  }
+html,
+body {
+  height: 100%;
+  background-color: #333333;
+  color: $red;
+  font-size: 20px;
 }
 
-.banner {
-  background-color: #212e4e;
-  color: #fff;
-  padding: 45px 40px;
-
-  @media (max-width: $desktop) {
-    padding: 35px 30px;
-  }
-
-  @media (max-width: $tablet) {
-    padding: 25px 20px;
-  }
-
-  @media (max-width: $small) {
-    padding: 10px 10px 25px;
-  }
-}
-
-.banner__container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0;
+.wrapper {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.fullscreen {
+  min-height: 100vh;
+  // background: linear-gradient(to right bottom, #a20606 50%, #d60000 50%);
+  background: url("https://www.interfax.ru/aspimg/46245p.png") center / cover
+    no-repeat no-repeat fixed;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  position: relative;
 
-  @media (max-width: $tablet) {
-    flex-direction: column-reverse;
-  }
-}
-
-.banner__img-wrap {
-  width: 60%;
-
-  @media (max-width: $tablet) {
-    margin-bottom: 20px;
+  &::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &:hover {
+    .friday {
+      box-shadow: 0 -10px 30px 10px rgba(0, 0, 0, 0.2);
+      bottom: -25%;
+    }
+
+    .black {
+      box-shadow: 0 10px 30px 10px rgba(0, 0, 0, 0.2);
+      top: -25%;
+    }
+  }
+
+  &-one {
+    .service__link {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(90deg);
+      width: 40px;
+      height: 40px;
+      background-color: $red;
+      z-index: 10;
+      font-size: 0;
+      color: transparent;
+
+      &::after {
+        position: absolute;
+        content: "\203A";
+        width: 40px;
+        height: 40px;
+        top: 5px;
+        left: 0;
+        z-index: 20;
+        font-size: 30px;
+        color: $black;
+        text-align: center;
+        transition: $tr;
+        animation: bouncex 0.3s alternate ease infinite;
+      }
+
+      &:hover::after {
+        animation: none;
+      }
+    }
+  }
+
+  &-two {
+    background-color: brown;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-three {
+    background-color: rgb(224, 19, 19);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-bg {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url("https://www.interfax.ru/aspimg/46245p.png") center / cover
+      no-repeat fixed;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   }
 }
 
-.banner__img-wrap img {
-  display: block;
-}
-
-.banner__title-wrap {
+.fullscreen__body {
+  text-align: center;
+  color: $white;
+  overflow: hidden;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
-  width: 40%;
-
-  @media (max-width: $tablet) {
-    width: 100%;
-  }
 }
 
-.banner__title {
-  font-size: 44px;
-  line-height: 120%;
-  position: relative;
-  padding: 0 0 25px;
-  margin-right: 40px;
-  font-family: "GothamSSm_Bold", Arial, "Helvetica Neue", Helvetica, sans-serif;
+.content {
+  padding: 40px;
+}
+
+.black {
+  background-color: $black;
+  text-transform: uppercase;
+  font-size: 70px;
   font-weight: 700;
+  line-height: 70px;
+  min-height: 50vh;
+  width: 100%;
+  transition: 1s all ease-in-out;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  color: $red;
+  user-select: none;
+}
 
-  &::after {
-    position: absolute;
-    content: "";
-    bottom: 0;
-    left: 2px;
-    width: 50px;
-    height: 6px;
-    background-color: #e65044;
+.friday {
+  background-color: $red;
+  text-transform: uppercase;
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: 700;
+  padding: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: $black;
+  min-height: 50vh;
+  width: 100%;
+  transition: 1s all ease-in-out;
+  user-select: none;
+}
 
-    @media (max-width: $desktop) {
-      width: 40px;
-      height: 5px;
-    }
+.link {
+  text-transform: uppercase;
+  display: block;
+  padding: 10px 25px;
+  color: $white;
+  text-align: center;
+  text-decoration: none;
+  border: 3px solid $white;
+  background-color: $red;
+  border-radius: 20px;
 
-    @media (max-width: $tablet) {
-      width: 30px;
-      height: 4px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+  &:hover {
+    animation: shake 0.8s linear infinite;
   }
-
-  @media (max-width: $desktop) {
-    font-size: 30px;
-    padding-bottom: 20px;
-    margin-right: 30px;
+}
+@keyframes shake {
+  0% {
+    transform: translate(2px, 1px) rotate(0deg);
   }
-
-  @media (max-width: $tablet) {
-    font-size: 24px;
-    text-align: center;
-    margin: 0;
-    padding-bottom: 10px;
+  10% {
+    transform: translate(-1px, -2px) rotate(-2deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(3deg);
+  }
+  30% {
+    transform: translate(0px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(2px, 1px) rotate(-2deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(4deg);
+  }
+  90% {
+    transform: translate(2px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
   }
 }
 
-.page__container {
-  max-width: 560px;
-  padding: 0 20px;
-  margin: 0 auto 80px;
+@keyframes bouncex {
+  from {
+    transform: translateX(-3px);
+  }
+
+  to {
+    transform: translateX(3px);
+  }
 }
